@@ -49,6 +49,10 @@ function ColorCheckDay() {
               {
                   $('#documentView').css( "font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif','important');
               }
+                   else  if( result.strFontTypeValue.toString()=='5')
+              {
+                  $('#documentView').css( "font-family", 'Papyrus,fantasy','important');
+              }
            });
   
 
