@@ -1,8 +1,9 @@
 $(window).load(function () {
+
     ColorCheckDay();
     var intervalID = setInterval(function () {
         ColorCheckDay()
-    }, 60000);
+    }, 5000);
     var intervalID = setInterval(function () {
         CheckReminder()
     }, 60000);
@@ -31,6 +32,25 @@ function ColorCheckDay() {
     jQuery('div:contains("' + test + '")').closest('.content').addClass('day-style-today');
 
 
+           chrome.storage.sync.get('strFontTypeValue', function (result) {
+              if( result.strFontTypeValue.toString()=='1')
+              {
+                  $('#documentView').css( "font-family", 'Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace','important');
+              }
+              else  if( result.strFontTypeValue.toString()=='2')
+              {
+                  $('#documentView').css( "font-family", 'Helvetica Neue,Helvetica,Arial,sans-serif','important');
+              }
+                else  if( result.strFontTypeValue.toString()=='3')
+              {
+                  $('#documentView').css( "font-family", 'Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif','important');
+              }
+     else  if( result.strFontTypeValue.toString()=='4')
+              {
+                  $('#documentView').css( "font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif','important');
+              }
+           });
+  
 
 }
 
