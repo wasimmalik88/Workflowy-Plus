@@ -31,3 +31,5 @@ Again I repeat,Please follow syntax otherwise you can miss you important reminde
 Feature 2: Day Highlighter
 You may have used color coding using some extension but those are static. I have create a Day Highlighter. This will automatically color selected day.
 Like if you have list for different days. You can focus on current day as it color will automatically turn Red. You can see screenshot for this.
+
+For more details please visit http://wasimdev.blogspot.com/
