@@ -1,0 +1,5 @@
+1. Format is simplied @r,message,date time this will help you to see all reminders by clicking @r
+2. Removed limitation of removing zero in minutes remember last note "If you are going to set reminder for 19:03 please write 19:3 starting zeros must be ommited for now" this is fixed now you can use 19:03 that is more natural
+3. Take out time for your health Daily. Added feature of Daily Reminders @rd,Walk,21:44 no need to add date
+4. Always Pay your monthly Bill on Time. Added feature of Monthly Reminders @rm,Credit Card Bill,15 21:44 no need to specify month and year
+5. Never Miss Any Birhday or Aniversary. Added feature of Yearly Reminder @ry,Wasim Birthday,15-04 21:54 no need to specify year. 
