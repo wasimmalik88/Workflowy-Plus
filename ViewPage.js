@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('ddlViewBy').addEventListener('change', saveChanges);
+     chrome.storage.sync.get('strFontTypeValue', function (result) {
+           var e = document.getElementById("ddlViewBy");
+           e.selectedIndex=     result.strFontTypeValue-1;
+              
+              
+     });
 });
 
    function saveChanges() {
