@@ -3,6 +3,7 @@ Feature 1: Reminders
 Feature 2: Day Highlighter
 Feature 3: Encrypt Decryption your workflow items
 Feature 4: Support multiple fonts for workflowy
+Feature 5: Ability to change background colors
 
 Update Log:
 Feature 3: Encrypt Decryption your workflow items

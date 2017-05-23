@@ -54,8 +54,24 @@ function ColorCheckDay() {
                   $('#documentView').css( "font-family", 'Papyrus,fantasy','important');
               }
            });
-  
+     chrome.storage.sync.get('strBackColor', function (result) {
 
+           if (typeof result.strBackColor === "undefined") {
+    // No profile in storage
+  } else{
+         
+  $('#documentView').css( "background-color", result.strBackColor.toString(),'important');
+  } 
+     });
+
+        chrome.storage.sync.get('strPageBackColor1', function (result) {
+         
+           if (typeof result.strPageBackColor1 === "undefined") {
+    // No profile in storage
+  } else{
+  $('.page').css( "background-color", result.strPageBackColor1.toString(),'important');
+  }
+     });
 }
 
 function ProcessReminders(ReminderItem, type) {
