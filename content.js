@@ -33,6 +33,11 @@ function ColorCheckDay() {
 
 
            chrome.storage.sync.get('strFontTypeValue', function (result) {
+               if( result.strFontTypeValue.toString()=='0')
+              {
+                  $('#documentView').css( "font-family", 'Georgia,Times,serif','important');
+               
+              }
               if( result.strFontTypeValue.toString()=='1')
               {
                   $('#documentView').css( "font-family", 'Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace','important');

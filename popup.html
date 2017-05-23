@@ -1,22 +1,25 @@
 <!doctype html>
 <html>
-  <head>
-    <title>WorkFlowy Plus</title>
- 
+
+<head>
+  <title>WorkFlowy Plus</title>
+
 
   <script src="ViewPage.js"></script>
- <style type="text/css" >
-body {
-  width: 400px; /* your desired width */
-height: 400px;
+  <style type="text/css">
+    body {
+      width: 400px;
+      /* your desired width */
+      height: 400px;
+    }
+  </style>
+</head>
 
-}
-</style>
-  </head>
-  <body>
-      
-    <h1>Font Settings:</h1>
-    <select id="ddlViewBy" >
+<body>
+
+  <h1>Font Settings:</h1>
+  <select id="ddlViewBy">
+       <option value="0">Default</option>
   <option value="1">Type Writer</option>
   <option value="2">Helvetica </option>
   <option value="3">Avant Garde</option>
@@ -24,11 +27,13 @@ height: 400px;
     <option value="5">Papyrus</option>
 </select>
 
- <h1>Background Color:</h1>
+  <h1>Background Color:</h1>
   <input type="color" id="backcolor" value="#ff0000">
-<h1> Page Background Color:</h1>
+  <button text="Reset" id="btnResetBackground">Reset</button>
+  <h1> Page Background Color:</h1>
   <input type="color" id="backPagecolor" value="#ff0000">
+  <button text="Reset" id="btnResetPageBackground">Reset</button>
+  <div id="ResponseMessage" />
+</body>
 
-<div id="ResponseMessage"/>
-  </body>
 </html>
