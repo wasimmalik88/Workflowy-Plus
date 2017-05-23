@@ -12,8 +12,6 @@ To decyrpt select encrypted text right click in menu click workflowy plus-> encr
 DISCAILMER: I am not responsible for any damage to your data in any way. This is an experimental feature use it at your own risk.
 
 Major Updates
-
-
 1. Format is simplied @r,message,date time this will help you to see all reminders by clicking @r
 2. Removed limitation of removing zero in minutes remember last note "If you are going to set reminder for 19:03 please write 19:3 starting zeros must be ommited for now" this is fixed now you can use 19:03 that is more natural
 3. Take out time for your health Daily. Added feature of Daily Reminders @rd,Walk,21:44 no need to add date
