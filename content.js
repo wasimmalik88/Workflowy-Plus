@@ -35,7 +35,7 @@ function ColorCheckDay() {
            chrome.storage.sync.get('strFontTypeValue', function (result) {
                if( result.strFontTypeValue.toString()=='0')
               {
-                  $('#documentView').css( "font-family", 'Georgia,Times,serif','important');
+                  $('#documentView').css( "font-family", 'Helvetica Neue,Arial,Sans-serif','important');
                
               }
               if( result.strFontTypeValue.toString()=='1')
