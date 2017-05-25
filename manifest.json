@@ -15,7 +15,7 @@
   "content_scripts": [
     {
       "css": [ "style.css" ],
-      "js": [ "jquery-1.10.2.js", "content.js" ],
+      "js": [ "jquery-2.0.0.min.js", "content.js" ],
       "matches": [ "*://*.workflowy.com/*" ]
     }
   
