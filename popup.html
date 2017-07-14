@@ -1,39 +1,47 @@
 <!doctype html>
 <html>
-
 <head>
-  <title>WorkFlowy Plus</title>
+    <title>WorkFlowy Plus</title>
 
+    <script src="ViewPage.js"></script>
 
-  <script src="ViewPage.js"></script>
-  <style type="text/css">
-    body {
-      width: 400px;
-      /* your desired width */
-      height: 400px;
-    }
-  </style>
+    style type="text/css"
 </head>
 
 <body>
+    <h1>Font Settings:</h1>
 
-  <h1>Font Settings:</h1>
-  <select id="ddlViewBy">
-       <option value="0">Default</option>
-  <option value="1">Type Writer</option>
-  <option value="2">Helvetica </option>
-  <option value="3">Avant Garde</option>
-  <option value="4">Gill Sans</option>
-    <option value="5">Papyrus</option>
-</select>
+    <select id="ddlViewBy">
+        <option value="0">Default</option>
+        <option value="1">Type Writer</option>
+        <option value="2">Helvetica</option>
+        <option value="3">Avant Garde</option>
+        <option value="4">Gill Sans</option>
+        <option value="5">Papyrus</option>
+    </select>
 
-  <h1>Background Color:</h1>
-  <input type="color" id="backcolor" value="#ff0000">
-  <button text="Reset" id="btnResetBackground">Reset</button>
-  <h1> Page Background Color:</h1>
-  <input type="color" id="backPagecolor" value="#ff0000">
-  <button text="Reset" id="btnResetPageBackground">Reset</button>
-  <div id="ResponseMessage" />
+    <h1>Background Color:</h1>
+
+    <input type="color"
+           id="backcolor"
+           value="#ff0000"></input>
+
+    <button text="Reset"
+            id="btnResetBackground">
+        Reset
+    </button>
+
+    <h1>Page Background Color:</h1>
+
+    <input type="color"
+           id="backPagecolor"
+           value="#ff0000"></input>
+
+    <button text="Reset"
+            id="btnResetPageBackground">
+        Reset
+    </button>
+
+    <div id="ResponseMessage"></div>
 </body>
-
 </html>

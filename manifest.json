@@ -6,7 +6,7 @@
   "description": "Get most out of WorkFlowy",
   "browser_action": {
     "default_icon": "tick.png",
-    "default_popup":"popup.html"
+    "default_popup": "popup.html"
   },
   "background": {
     "scripts": [ "eventpage.js" ],
@@ -18,13 +18,13 @@
       "js": [ "jquery-2.0.0.min.js", "content.js" ],
       "matches": [ "*://*.workflowy.com/*" ]
     }
-  
+
   ],
- "permissions": [
-      "contextMenus",
-       "storage"
-    ],
-    "icons": {
-          "16": "ok16.png"
-    }
+  "permissions": [
+    "contextMenus",
+    "storage"
+  ],
+  "icons": {
+    "16": "ok16.png"
+  }
 }

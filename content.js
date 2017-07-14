@@ -32,51 +32,45 @@ function ColorCheckDay() {
     jQuery('div:contains("' + test + '")').closest('.content').addClass('day-style-today');
 
 
-           chrome.storage.sync.get('strFontTypeValue', function (result) {
-               if( result.strFontTypeValue.toString()=='0')
-              {
-                  $('#documentView').css( "font-family", 'Helvetica Neue,Arial,Sans-serif','important');
-               
-              }
-              if( result.strFontTypeValue.toString()=='1')
-              {
-                  $('#documentView').css( "font-family", 'Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace','important');
-              }
-              else  if( result.strFontTypeValue.toString()=='2')
-              {
-                  $('#documentView').css( "font-family", 'Helvetica Neue,Helvetica,Arial,sans-serif','important');
-              }
-                else  if( result.strFontTypeValue.toString()=='3')
-              {
-                  $('#documentView').css( "font-family", 'Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif','important');
-              }
-     else  if( result.strFontTypeValue.toString()=='4')
-              {
-                  $('#documentView').css( "font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif','important');
-              }
-                   else  if( result.strFontTypeValue.toString()=='5')
-              {
-                  $('#documentView').css( "font-family", 'Papyrus,fantasy','important');
-              }
-           });
-     chrome.storage.sync.get('strBackColor', function (result) {
+    chrome.storage.sync.get('strFontTypeValue', function (result) {
+        if (result.strFontTypeValue.toString() == '0') {
+            $('#documentView').css("font-family", 'Helvetica Neue,Arial,Sans-serif', 'important');
 
-           if (typeof result.strBackColor === "undefined") {
-    // No profile in storage
-  } else{
-         
-  $('#documentView').css( "background-color", result.strBackColor.toString(),'important');
-  } 
-     });
+        }
+        if (result.strFontTypeValue.toString() == '1') {
+            $('#documentView').css("font-family", 'Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace', 'important');
+        }
+        else if (result.strFontTypeValue.toString() == '2') {
+            $('#documentView').css("font-family", 'Helvetica Neue,Helvetica,Arial,sans-serif', 'important');
+        }
+        else if (result.strFontTypeValue.toString() == '3') {
+            $('#documentView').css("font-family", 'Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif', 'important');
+        }
+        else if (result.strFontTypeValue.toString() == '4') {
+            $('#documentView').css("font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif', 'important');
+        }
+        else if (result.strFontTypeValue.toString() == '5') {
+            $('#documentView').css("font-family", 'Papyrus,fantasy', 'important');
+        }
+    });
+    chrome.storage.sync.get('strBackColor', function (result) {
 
-        chrome.storage.sync.get('strPageBackColor1', function (result) {
-         
-           if (typeof result.strPageBackColor1 === "undefined") {
-    // No profile in storage
-  } else{
-  $('.page').css( "background-color", result.strPageBackColor1.toString(),'important');
-  }
-     });
+        if (typeof result.strBackColor === "undefined") {
+            // No profile in storage
+        } else {
+
+            $('#documentView').css("background-color", result.strBackColor.toString(), 'important');
+        }
+    });
+
+    chrome.storage.sync.get('strPageBackColor1', function (result) {
+
+        if (typeof result.strPageBackColor1 === "undefined") {
+            // No profile in storage
+        } else {
+            $('.page').css("background-color", result.strPageBackColor1.toString(), 'important');
+        }
+    });
 }
 
 function ProcessReminders(ReminderItem, type) {
@@ -109,13 +103,13 @@ function ProcessReminders(ReminderItem, type) {
             if (date.toString() == today.toString() && curTime.toString() == time.toString())
                 alert(Message);
         }
-            //Daily Reminders
+        //Daily Reminders
         else if (type == 2) {
             var time = arrDateTime[0];
             if (curTime.toString() == time.toString())
                 alert(Message);
         }
-            //Yearly Reminders
+        //Yearly Reminders
         else if (type == 3) {
             today = dd + '-' + mm
             if (date.toString() == today.toString() && curTime.toString() == time.toString())
