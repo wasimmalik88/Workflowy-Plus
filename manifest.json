@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "WorkFlowy Plus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Get most out of WorkFlowy",
   "browser_action": {
     "default_icon": "tick.png",
