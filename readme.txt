@@ -4,6 +4,8 @@ Feature 2: Day Highlighter
 Feature 3: Encrypt Decryption your workflow items
 Feature 4: Support multiple fonts for workflowy
 Feature 5: Ability to change background colors
+Feature 6: Day Highlighter Made Optional
+Feature 7: Added word count option in Right Click Context Menu
 
 Update Log:
 Feature 3: Encrypt Decryption your workflow items

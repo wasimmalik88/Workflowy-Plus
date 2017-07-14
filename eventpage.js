@@ -112,8 +112,16 @@ var contextmenuitemdecrypt = {
     "title": "Decrypt",
     "contexts": ["selection"]
 };
+
+var contextmenuWordCount = {
+    "id": "WordCount",
+    "title": "Word Count",
+    "contexts": ["selection"]
+};
+
 chrome.contextMenus.create(contextmenuitem);
 chrome.contextMenus.create(contextmenuitemdecrypt);
+chrome.contextMenus.create(contextmenuWordCount);
 chrome.contextMenus.onClicked.addListener(function (clickData) {
 
     if (clickData.menuItemId == "Encrypt" && clickData.selectionText) {
@@ -145,3 +153,10 @@ function executeCopy(text) {
     input.remove();
 }
 
+
+chrome.contextMenus.onClicked.addListener(function (clickData) {
+
+    if (clickData.menuItemId == "WordCount" && clickData.selectionText) {
+        alert(clickData.selectionText.toString().split(" ").length);
+    }
+});
