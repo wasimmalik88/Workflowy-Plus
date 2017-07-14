@@ -5,11 +5,11 @@
 
     <script src="ViewPage.js"></script>
 
-    style type="text/css"
+  
 </head>
 
-<body>
-    <h1>Font Settings:</h1>
+<body style="width:250px">
+    <h4>Font Settings:</h4>
 
     <select id="ddlViewBy">
         <option value="0">Default</option>
@@ -20,7 +20,7 @@
         <option value="5">Papyrus</option>
     </select>
 
-    <h1>Background Color:</h1>
+    <h4>Background Color:</h4>
 
     <input type="color"
            id="backcolor"
@@ -31,7 +31,7 @@
         Reset
     </button>
 
-    <h1>Page Background Color:</h1>
+    <h4>Page Background Color:</h4>
 
     <input type="color"
            id="backPagecolor"
@@ -41,6 +41,9 @@
             id="btnResetPageBackground">
         Reset
     </button>
+    <br>    
+    <br>   
+    <input type="checkbox" id="cbDayHighlight" checked>Day Highlighter<br>    
 
     <div id="ResponseMessage"></div>
 </body>

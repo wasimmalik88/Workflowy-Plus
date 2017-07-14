@@ -27,11 +27,18 @@ function ColorCheckDay() {
         test = "Friday";
     else if (day == 6)
         test = "Saturday";
-
-    jQuery('.day-style-today').removeClass('day-style-today');
-    jQuery('div:contains("' + test + '")').closest('.content').addClass('day-style-today');
-
-
+    chrome.storage.sync.get('IsDayHighlightActive', function (result) {
+        {
+           // alert(result);
+            if (result.IsDayHighlightActive.toString() == "1") {
+                jQuery('.day-style-today').removeClass('day-style-today');
+                jQuery('div:contains("' + test + '")').closest('.content').addClass('day-style-today');
+            }
+            else {
+                jQuery('.day-style-today').removeClass('day-style-today');
+            }
+        }
+    });
     chrome.storage.sync.get('strFontTypeValue', function (result) {
         if (result.strFontTypeValue.toString() == '0') {
             $('#documentView').css("font-family", 'Helvetica Neue,Arial,Sans-serif', 'important');
@@ -103,13 +110,13 @@ function ProcessReminders(ReminderItem, type) {
             if (date.toString() == today.toString() && curTime.toString() == time.toString())
                 alert(Message);
         }
-        //Daily Reminders
+            //Daily Reminders
         else if (type == 2) {
             var time = arrDateTime[0];
             if (curTime.toString() == time.toString())
                 alert(Message);
         }
-        //Yearly Reminders
+            //Yearly Reminders
         else if (type == 3) {
             today = dd + '-' + mm
             if (date.toString() == today.toString() && curTime.toString() == time.toString())

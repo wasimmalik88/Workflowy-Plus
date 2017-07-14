@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('ddlViewBy').addEventListener('change', saveChanges);
     document.getElementById('backcolor').addEventListener('change', saveBackgroundChanges);
     document.getElementById('backPagecolor').addEventListener('change', savePageBackgroundChanges);
+    document.getElementById('cbDayHighlight').addEventListener('change', saveDayHiglightChange);
     document.getElementById('btnResetBackground').addEventListener('click', restBackground);
     document.getElementById('btnResetPageBackground').addEventListener('click', restPageBackground);
     chrome.storage.sync.get('strFontTypeValue', function (result) {
@@ -109,3 +110,41 @@ function savePageBackgroundChanges() {
 
     });
 }
+
+function saveDayHiglightChange() {
+    var e = document.getElementById("cbDayHighlight");
+    var strUser = null;
+    if (e.checked == true) {
+        strUser = "1";
+    }
+    else {
+        strUser = "0";
+    }
+
+    // Get a value saved in a form.
+
+    // Check that there's some code there.
+    if (!strUser) {
+        alert('Error: No value specified');
+        return;
+    }
+    // Save it using the Chrome extension storage API.
+    chrome.storage.sync.set({ 'IsDayHighlightActive': strUser }, function () {
+        // Notify that we saved.
+
+        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
+
+    });
+}
+
+chrome.storage.sync.get('IsDayHighlightActive', function (result) {
+    var e = document.getElementById("cbDayHighlight");
+    if (result.IsDayHighlightActive.toString() == "1") {
+        e.checked = true;
+    }
+    else {
+        e.checked = false;
+    }
+
+});
+
