@@ -70,6 +70,16 @@ function ColorCheckDay() {
         }
     });
 
+    chrome.storage.sync.get('strTextColor', function (result) {
+
+        if (typeof result.strTextColor === "undefined") {
+            // No profile in storage
+        } else {
+
+            $('#documentView').css("color", result.strTextColor.toString(), 'important');
+        }
+    });
+
     chrome.storage.sync.get('strPageBackColor1', function (result) {
 
         if (typeof result.strPageBackColor1 === "undefined") {

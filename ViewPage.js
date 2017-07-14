@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('ddlViewBy').addEventListener('change', saveChanges);
     document.getElementById('backcolor').addEventListener('change', saveBackgroundChanges);
+    document.getElementById('textcolor').addEventListener('change', saveTextChanges);
+
     document.getElementById('backPagecolor').addEventListener('change', savePageBackgroundChanges);
     document.getElementById('cbDayHighlight').addEventListener('change', saveDayHiglightChange);
     document.getElementById('btnResetBackground').addEventListener('click', restBackground);
     document.getElementById('btnResetPageBackground').addEventListener('click', restPageBackground);
+    document.getElementById('btnResetText').addEventListener('click', restText);
     chrome.storage.sync.get('strFontTypeValue', function (result) {
         var e = document.getElementById("ddlViewBy");
         e.selectedIndex = result.strFontTypeValue;
@@ -22,6 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+    chrome.storage.sync.get('strTextColor', function (result) {
+        var e = document.getElementById("textcolor");
+        if (typeof result.strTextColor === "undefined") {
+            // No profile in storage
+        } else {
+            e.value = result.strTextColor;
+        }
+
+    });
+
     chrome.storage.sync.get('strPageBackColor1', function (result) {
         var e = document.getElementById("backPagecolor");
         if (typeof result.strPageBackColor1 === "undefined") {
@@ -32,6 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+function restText() {
+    document.getElementById("textcolor").value = "#000";
+
+    chrome.storage.sync.set({ 'strTextColor': "#000" }, function () {
+        // Notify that we saved.
+
+        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
+
+    });
+}
+
 function restBackground() {
     document.getElementById("backcolor").value = "#f6f6f6";
 
@@ -147,4 +172,27 @@ chrome.storage.sync.get('IsDayHighlightActive', function (result) {
     }
 
 });
+
+
+
+
+function saveTextChanges() {
+    var e = document.getElementById("textcolor");
+    var strUser = e.value;
+    // Get a value saved in a form.
+
+    // Check that there's some code there.
+    if (!strUser) {
+        alert('Error: No value specified');
+        return;
+    }
+    // Save it using the Chrome extension storage API.
+    chrome.storage.sync.set({ 'strTextColor': strUser }, function () {
+        // Notify that we saved.
+
+        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
+
+    });
+}
+
 
