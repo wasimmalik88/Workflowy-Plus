@@ -118,25 +118,66 @@ function ProcessReminders(ReminderItem, type) {
         if (type == 1) {
             today = dd;
             if (date.toString() == today.toString() && curTime.toString() == time.toString())
-                alert(Message);
+               { 
+                   alert(Message);
+                    EmailNotification(Message);
+               }
         }
             //Daily Reminders
         else if (type == 2) {
             var time = arrDateTime[0];
             if (curTime.toString() == time.toString())
-                alert(Message);
+                {
+                    alert(Message);
+                    EmailNotification(Message);
+                }
         }
             //Yearly Reminders
         else if (type == 3) {
             today = dd + '-' + mm
             if (date.toString() == today.toString() && curTime.toString() == time.toString())
-                alert(Message);
+                {
+                    alert(Message);
+                    EmailNotification(Message);
+                }
         }
         else {
             if (date.toString() == today.toString() && curTime.toString() == time.toString())
-                alert(Message);
+                {
+                    alert(Message);
+                    EmailNotification(Message);
+                }
         }
     }
+
+}
+
+function EmailNotification(Message)
+{
+    var email='';
+    chrome.storage.sync.get('strEmail', function (result) {
+        {
+           // alert(result);
+            if (result.strEmail.toString() == "sample@example.com") {
+                alert("Now email notifications are avaible in Workflowy plus please set your email address to avail facility");
+                return;
+            }
+            else
+                {
+                   // alert(result.strEmail);
+                    email=result.strEmail;
+                   // alert(email);
+                }
+
+                var x = new XMLHttpRequest();
+                x.open('GET', 'https://sadds213.000webhostapp.com/email.php?message=' + Message+'&email='+email);
+                x.onload = function() {
+                    //alert(x.responseText);
+                };
+                x.send();
+        }
+    });
+  
 
 }
 

@@ -7,6 +7,7 @@ Feature 5: Ability to change background colors
 Feature 6: Day Highlighter Made Optional
 Feature 7: Added word count option in Right Click Context Menu
 Feature 8: Ability to change main Text Color
+Feature 9: Email alerts for Reminders
 
 Update Log:
 Feature 3: Encrypt Decryption your workflow items
