@@ -158,8 +158,13 @@ function EmailNotification(Message)
     chrome.storage.sync.get('strEmail', function (result) {
         {
            // alert(result);
-            if (result.strEmail.toString() == "sample@example.com") {
-                alert("Now email notifications are avaible in Workflowy plus please set your email address to avail facility");
+            if(result.strEmail===undefined)
+            {
+                alert("Now email notifications are avaible in Workflowy plus please set your email address to avail facility.");
+                return;
+            }
+           else if (result.strEmail.toString() == "sample@example.com") {
+                alert("Now email notifications are avaible in Workflowy plus please set your email address to avail facility.");
                 return;
             }
             else
