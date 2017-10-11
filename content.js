@@ -53,10 +53,6 @@ function ColorCheckDay() {
     else if (day == 6)
         test = "Saturday";
 
-
-
-
-
     chrome.storage.sync.get('IsDayHighlightActive', function (result) {
         {
 
@@ -73,6 +69,7 @@ function ColorCheckDay() {
             }
         }
     });
+
     chrome.storage.sync.get('strFontTypeValue', function (result) {
         if (typeof result.strFontTypeValue === "undefined") {
             // No profile in storage
@@ -96,6 +93,7 @@ function ColorCheckDay() {
             }
         }
     });
+
     chrome.storage.sync.get('strBackColor', function (result) {
 
         if (typeof result.strBackColor === "undefined") {
@@ -105,8 +103,6 @@ function ColorCheckDay() {
             $('#documentView').css("background-color", result.strBackColor.toString(), 'important');
         }
     });
-
-
 
     chrome.storage.sync.get('strTextColor', function (result) {
 
@@ -210,8 +206,6 @@ function EmailNotification(Message) {
             x.send();
         }
     });
-
-
 }
 
 function CheckReminder() {
@@ -223,7 +217,6 @@ function CheckReminder() {
     var ReminderItem = Reminder.split("@rm,");
     ProcessReminders(ReminderItem, 1);
 
-
     var Reminder = jQuery('div:contains("@rd,")').closest('.content').text();
     var ReminderItem = Reminder.split("@rd,");
     ProcessReminders(ReminderItem, 2);
@@ -231,7 +224,4 @@ function CheckReminder() {
     var Reminder = jQuery('div:contains("@ry,")').closest('.content').text();
     var ReminderItem = Reminder.split("@ry,");
     ProcessReminders(ReminderItem, 3);
-
-    //console.log(ReminderItem);
-
 }

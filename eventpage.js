@@ -123,7 +123,6 @@ chrome.contextMenus.create(contextmenuitem);
 chrome.contextMenus.create(contextmenuitemdecrypt);
 chrome.contextMenus.create(contextmenuWordCount);
 chrome.contextMenus.onClicked.addListener(function (clickData) {
-
     if (clickData.menuItemId == "Encrypt" && clickData.selectionText) {
         var encrypted = CryptoJS.AES.encrypt(clickData.selectionText.toString(), "U2FsdGVkX18/bjod9iOh");
         alert("Your Data is encrypted and copied to clip board please press Cntrl+V to paste");
@@ -134,7 +133,6 @@ chrome.contextMenus.onClicked.addListener(function (clickData) {
 
 
 chrome.contextMenus.onClicked.addListener(function (clickData) {
-
     if (clickData.menuItemId == "Decrypt" && clickData.selectionText) {
         var encrypted = CryptoJS.AES.decrypt(clickData.selectionText.toString(), "U2FsdGVkX18/bjod9iOh");
         alert("Your Data is decrypt and copied to clip board please press Cntrl+V to paste");
@@ -153,9 +151,7 @@ function executeCopy(text) {
     input.remove();
 }
 
-
 chrome.contextMenus.onClicked.addListener(function (clickData) {
-
     if (clickData.menuItemId == "WordCount" && clickData.selectionText) {
         alert(clickData.selectionText.toString().split(" ").length);
     }
