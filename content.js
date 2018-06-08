@@ -178,7 +178,7 @@ function ProcessReminders(ReminderItem, type) {
             }
         }
     }
-
+     
 }
 
 function EmailNotification(Message) {

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {   
     document.getElementById('ddlViewBy').addEventListener('change', saveChanges);
     document.getElementById('backcolor').addEventListener('change', saveBackgroundChanges);
     document.getElementById('textcolor').addEventListener('change', saveTextChanges);
