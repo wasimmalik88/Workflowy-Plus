@@ -7,8 +7,7 @@ Feature 5: Ability to change background colors
 Feature 6: Day Highlighter Made Optional
 Feature 7: Added word count option in Right Click Context Menu
 Feature 8: Ability to change main Text Color
-Feature 9: Email alerts for Reminders
-Feature 10: Support for Inline Images this script credit goes to Original Developer
+Feature 9: Support for Inline Images this script credit goes to Original Developer
 https://gist.github.com/Wizmann/605ff2a609348b6ec3a3#file-workflowy-with-image-js
 
 Details:
