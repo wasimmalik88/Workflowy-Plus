@@ -77,19 +77,19 @@ function ColorCheckDay() {
             var strFontValue = result.strFontTypeValue;
 
             if (strFontValue == '0') {
-                $('#documentView').css("font-family", 'Helvetica Neue,Arial,Sans-serif', 'important');
+                $('.content').css("font-family", 'Helvetica Neue,Arial,Sans-serif', 'important');
 
             }
             if (strFontValue == '1') {
-                $('#documentView').css("font-family", 'Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace', 'important');
+                $('.content').css("font-family", 'Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace', 'important');
             } else if (strFontValue == '2') {
-                $('#documentView').css("font-family", 'Helvetica Neue,Helvetica,Arial,sans-serif', 'important');
+                $('.content').css("font-family", 'Helvetica Neue,Helvetica,Arial,sans-serif', 'important');
             } else if (strFontValue == '3') {
-                $('#documentView').css("font-family", 'Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif', 'important');
+                $('.content').css("font-family", 'Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif', 'important');
             } else if (strFontValue == '4') {
-                $('#documentView').css("font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif', 'important');
+                $('.content').css("font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif', 'important');
             } else if (strFontValue == '5') {
-                $('#documentView').css("font-family", 'Papyrus,fantasy', 'important');
+                $('.content').css("font-family", 'Papyrus,fantasy', 'important');
             }
         }
     });
@@ -100,7 +100,7 @@ function ColorCheckDay() {
             // No profile in storage
         } else {
 
-            $('#documentView').css("background-color", result.strBackColor.toString(), 'important');
+            $('._16aorrq').css("background-color", result.strBackColor.toString(), 'important');
         }
     });
 
@@ -110,7 +110,7 @@ function ColorCheckDay() {
             // No profile in storage
         } else {
 
-            $('#documentView').css("color", result.strTextColor.toString(), 'important');
+            $('.project').css("color", result.strTextColor.toString(), 'important');
         }
     });
 
@@ -153,7 +153,7 @@ function ProcessReminders(ReminderItem, type) {
             today = dd;
             if (date.toString() == today.toString() && curTime.toString() == time.toString()) {
                 alert(Message);
-                EmailNotification(Message);
+                
             }
         }
         //Daily Reminders
@@ -161,7 +161,7 @@ function ProcessReminders(ReminderItem, type) {
             var time = arrDateTime[0];
             if (curTime.toString() == time.toString()) {
                 alert(Message);
-                EmailNotification(Message);
+                
             }
         }
         //Yearly Reminders
@@ -169,44 +169,19 @@ function ProcessReminders(ReminderItem, type) {
             today = dd + '-' + mm
             if (date.toString() == today.toString() && curTime.toString() == time.toString()) {
                 alert(Message);
-                EmailNotification(Message);
+                
             }
         } else {
             if (date.toString() == today.toString() && curTime.toString() == time.toString()) {
                 alert(Message);
-                EmailNotification(Message);
+                
             }
         }
     }
      
 }
 
-function EmailNotification(Message) {
-    var email = '';
-    chrome.storage.sync.get('strEmail', function (result) {
-        {
-            // alert(result);
-            if (result.strEmail === undefined) {
-                alert("Now email notifications are avaible in Workflowy plus please set your email address to avail facility.");
-                return;
-            } else if (result.strEmail.toString() == "sample@example.com") {
-                alert("Now email notifications are avaible in Workflowy plus please set your email address to avail facility.");
-                return;
-            } else {
-                // alert(result.strEmail);
-                email = result.strEmail;
-                // alert(email);
-            }
 
-            var x = new XMLHttpRequest();
-            x.open('GET', 'https://sadds213.000webhostapp.com/email.php?message=' + Message + '&email=' + email);
-            x.onload = function () {
-                //alert(x.responseText);
-            };
-            x.send();
-        }
-    });
-}
 
 function CheckReminder() {
     var Reminder = jQuery('div:contains("@r,")').closest('.content').text();

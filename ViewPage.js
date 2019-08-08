@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('ddlViewBy').addEventListener('change', saveChanges);
     document.getElementById('backcolor').addEventListener('change', saveBackgroundChanges);
     document.getElementById('textcolor').addEventListener('change', saveTextChanges);
-    document.getElementById('txtEmail').addEventListener('change', saveEmail);
+
     document.getElementById('backPagecolor').addEventListener('change', savePageBackgroundChanges);
     document.getElementById('cbDayHighlight').addEventListener('change', saveDayHiglightChange);
     document.getElementById('btnResetBackground').addEventListener('click', restBackground);
@@ -12,12 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var e = document.getElementById("ddlViewBy");
         e.selectedIndex = result.strFontTypeValue;
     });
-    chrome.storage.sync.get('strEmail', function (result) {
-        var e = document.getElementById("txtEmail");
-        if (typeof result.strEmail === "undefined") {} else {
-            e.value = result.strEmail;
-        }
-    });
+
     chrome.storage.sync.get('strBackColor', function (result) {
         var e = document.getElementById("backcolor");
         if (typeof result.strBackColor === "undefined") {} else {
@@ -38,13 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function saveEmail() {
-    chrome.storage.sync.set({
-        'strEmail': document.getElementById("txtEmail").value
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
 
 function restText() {
     document.getElementById("textcolor").value = "#000";
@@ -135,7 +123,7 @@ function saveDayHiglightChange() {
 }
 chrome.storage.sync.get('IsDayHighlightActive', function (result) {
     var e = document.getElementById("cbDayHighlight");
-    if (result.IsDayHighlightActive.toString() == "1") {
+    if (result.IsDayHighlightActive == "1") {
         e.checked = true;
     } else {
         e.checked = false;
