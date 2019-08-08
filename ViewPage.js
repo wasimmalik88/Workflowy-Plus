@@ -44,9 +44,9 @@ function restText() {
 }
 
 function restBackground() {
-    document.getElementById("backcolor").value = "#f6f6f6";
+    document.getElementById("backcolor").value = "#ffffff";
     chrome.storage.sync.set({
-        'strBackColor': "#f6f6f6"
+        'strBackColor': "#ffffff"
     }, function () {
         document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
     });

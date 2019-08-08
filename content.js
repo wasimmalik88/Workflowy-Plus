@@ -23,12 +23,14 @@ function parseImg() {
     });
 };
 
+
+
 $(window).load(function () {
 
     ColorCheckDay();
     var intervalID = setInterval(function () {
         ColorCheckDay()
-    }, 5000);
+    }, 400);
     var intervalID = setInterval(function () {
         CheckReminder()
     }, 60000);
@@ -109,7 +111,6 @@ function ColorCheckDay() {
         if (typeof result.strTextColor === "undefined") {
             // No profile in storage
         } else {
-
             $('.project').css("color", result.strTextColor.toString(), 'important');
         }
     });
