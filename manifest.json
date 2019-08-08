@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "WorkFlowy Plus",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Get most out of WorkFlowy",
   "browser_action": {
     "default_icon": "tick.png",
@@ -20,8 +20,7 @@
   ],
   "permissions": [
     "contextMenus",
-    "storage",
-    "https://sadds213.000webhostapp.com/"
+    "storage"
   ],
   "icons": {
     "16": "ok16.png"
