@@ -151,6 +151,16 @@ function executeCopy(text) {
     input.remove();
 }
 
+function AddPendingBullet(){
+    var s = document.createElement('script');
+    // TODO: add "script.js" to web_accessible_resources in manifest.json
+    s.src = chrome.runtime.getURL('newbullet.js');
+    s.onload = function() {
+        this.remove();
+    };
+    (document.head || document.documentElement).appendChild(s);
+};
+
 chrome.contextMenus.onClicked.addListener(function (clickData) {
     if (clickData.menuItemId == "WordCount" && clickData.selectionText) {
         alert(clickData.selectionText.toString().split(" ").length);

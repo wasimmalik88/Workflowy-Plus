@@ -1,13 +1,19 @@
-document.addEventListener('DOMContentLoaded', function () {   
+document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('ddlViewBy').addEventListener('change', saveChanges);
     document.getElementById('backcolor').addEventListener('change', saveBackgroundChanges);
     document.getElementById('textcolor').addEventListener('change', saveTextChanges);
 
     document.getElementById('backPagecolor').addEventListener('change', savePageBackgroundChanges);
+    document.getElementById('bulletColor').addEventListener('change', saveBulletColor);
     document.getElementById('cbDayHighlight').addEventListener('change', saveDayHiglightChange);
     document.getElementById('btnResetBackground').addEventListener('click', restBackground);
     document.getElementById('btnResetPageBackground').addEventListener('click', restPageBackground);
     document.getElementById('btnResetText').addEventListener('click', restText);
+    document.getElementById('btnBulletColor').addEventListener('click', restBulletColor);
+    document.getElementById('btnAddNewBullet').addEventListener('click', btnAddNewBullet);
+    document.getElementById('btnAge').addEventListener('click', btnAge);
+    document.getElementById('btnAddDays').addEventListener('click', btnAddDays);
+
     chrome.storage.sync.get('strFontTypeValue', function (result) {
         var e = document.getElementById("ddlViewBy");
         e.selectedIndex = result.strFontTypeValue;
@@ -15,112 +21,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     chrome.storage.sync.get('strBackColor', function (result) {
         var e = document.getElementById("backcolor");
-        if (typeof result.strBackColor === "undefined") {} else {
+        if (typeof result.strBackColor === "undefined") { } else {
             e.value = result.strBackColor;
         }
     });
     chrome.storage.sync.get('strTextColor', function (result) {
         var e = document.getElementById("textcolor");
-        if (typeof result.strTextColor === "undefined") {} else {
+        if (typeof result.strTextColor === "undefined") { } else {
             e.value = result.strTextColor;
         }
     });
     chrome.storage.sync.get('strPageBackColor1', function (result) {
         var e = document.getElementById("backPagecolor");
-        if (typeof result.strPageBackColor1 === "undefined") {} else {
+        if (typeof result.strPageBackColor1 === "undefined") { } else {
             e.value = result.strPageBackColor1;
+        }
+    });
+
+
+
+    chrome.storage.sync.get('strbulletColor', function (result) {
+        var e = document.getElementById("bulletColor");
+        if (typeof result.strbulletColor === "undefined") { } else {
+            e.value = result.strbulletColor;
         }
     });
 });
 
-
-function restText() {
-    document.getElementById("textcolor").value = "#000";
-    chrome.storage.sync.set({
-        'strTextColor': "#000"
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
-
-function restBackground() {
-    document.getElementById("backcolor").value = "#ffffff";
-    chrome.storage.sync.set({
-        'strBackColor': "#ffffff"
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
-
-function restPageBackground() {
-    document.getElementById("backPagecolor").value = "#ffffff";
-    chrome.storage.sync.set({
-        'strPageBackColor1': "#ffffff"
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
-
-function saveChanges() {
-    var e = document.getElementById("ddlViewBy");
-    var strUser = e.options[e.selectedIndex].value;
-    if (!strUser) {
-        alert('Error: No value specified');
-        return;
-    }
-    chrome.storage.sync.set({
-        'strFontTypeValue': strUser
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
-
-function saveBackgroundChanges() {
-    var e = document.getElementById("backcolor");
-    var strUser = e.value;
-    if (!strUser) {
-        alert('Error: No value specified');
-        return;
-    }
-    chrome.storage.sync.set({
-        'strBackColor': strUser
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
-
-function savePageBackgroundChanges() {
-    var e = document.getElementById("backPagecolor");
-    var strUser = e.value;
-    if (!strUser) {
-        alert('Error: No value specified');
-        return;
-    }
-    chrome.storage.sync.set({
-        'strPageBackColor1': strUser
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
-
-function saveDayHiglightChange() {
-    var e = document.getElementById("cbDayHighlight");
-    var strUser = null;
-    if (e.checked == true) {
-        strUser = "1";
-    } else {
-        strUser = "0";
-    }
-    if (!strUser) {
-        alert('Error: No value specified');
-        return;
-    }
-    chrome.storage.sync.set({
-        'IsDayHighlightActive': strUser
-    }, function () {
-        document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
-    });
-}
 chrome.storage.sync.get('IsDayHighlightActive', function (result) {
     var e = document.getElementById("cbDayHighlight");
     if (result.IsDayHighlightActive == "1") {
@@ -130,16 +57,85 @@ chrome.storage.sync.get('IsDayHighlightActive', function (result) {
     }
 });
 
+function btnAddNewBullet() {
+
+    chrome.storage.sync.set({
+        'strNewBullet': "Add Please"
+    });
+
+}
+function btnAge() {
+
+    chrome.storage.sync.set({
+        'strNewBullet': "Age"
+    });
+
+}
+function btnAddDays() {
+
+    chrome.storage.sync.set({
+        'strNewBullet': "Add"
+    });
+
+}
+
+function restBulletColor() {
+    document.getElementById("bulletColor").value = "#000000";
+    SaveChromeStorage('strbulletColor',"#000000");
+}
+
+function restText() {
+    document.getElementById("textcolor").value = "#000000";
+    SaveChromeStorage('strTextColor',"#000000");
+}
+
+function restBackground() {
+    document.getElementById("backcolor").value = "#ffffff";
+    SaveChromeStorage('strBackColor',"#ffffff");
+}
+
+function restPageBackground() {
+    document.getElementById("backPagecolor").value = "#ffffff";
+    SaveChromeStorage('strPageBackColor1',"#ffffff");
+
+}
+
+function saveChanges() {
+    SaveChromeStorage('strFontTypeValue',document.getElementById("ddlViewBy").options[document.getElementById("ddlViewBy").selectedIndex].value);
+}
+
+function saveBulletColor() {
+    SaveChromeStorage('strbulletColor',document.getElementById("bulletColor").value);
+}
+function saveBackgroundChanges() {
+    SaveChromeStorage('strBackColor',document.getElementById("backcolor").value);
+}
+
+function savePageBackgroundChanges() {
+    SaveChromeStorage('strPageBackColor1',document.getElementById("backPagecolor").value);
+}
+
+function saveDayHiglightChange() {
+
+    SaveChromeStorage('IsDayHighlightActive',document.getElementById("cbDayHighlight").checked?"1":"0");
+}
+
+
 function saveTextChanges() {
-    var e = document.getElementById("textcolor");
-    var strUser = e.value;
-    if (!strUser) {
+    SaveChromeStorage('strTextColor',document.getElementById("textcolor").value);
+}
+
+
+function SaveChromeStorage(variable,value)
+{
+    if (!value) {
         alert('Error: No value specified');
         return;
     }
     chrome.storage.sync.set({
-        'strTextColor': strUser
+        [variable]: value
     }, function () {
         document.getElementById("ResponseMessage").innerHTML = "Setting Saved!";
     });
 }
+

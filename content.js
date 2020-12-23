@@ -36,8 +36,45 @@ $(window).load(function () {
     }, 60000);
 
 
+    var intervalID = setInterval(function () {
+        AddPendingBullet()
+    }, 500);
+
+
 });
 
+function AddPendingBullet() {
+
+
+    chrome.storage.sync.get('strNewBullet', function (result) {
+
+        if (typeof result.strNewBullet === "undefined") {
+            // No profile in storage
+        }
+        else {
+            if (result.strNewBullet !== "nobullet") {
+                var s = document.createElement('script');
+                // TODO: add "script.js" to web_accessible_resources in manifest.json
+                if(result.strNewBullet=="Add Please")
+                s.src = chrome.runtime.getURL('newbullet.js');
+                else if(result.strNewBullet=="Age")
+                s.src = chrome.runtime.getURL('age.js');
+                else if(result.strNewBullet=="Add")
+                s.src = chrome.runtime.getURL('add.js');
+                s.onload = function () {
+                    this.remove();
+                };
+                (document.head || document.documentElement).appendChild(s);
+
+
+                chrome.storage.sync.set({
+                    'strNewBullet': "nobullet"
+                });
+            }
+        }
+    });
+
+}
 function ColorCheckDay() {
     var day = new Date().getDay();
     if (day == 0)
@@ -91,8 +128,37 @@ function ColorCheckDay() {
             } else if (strFontValue == '4') {
                 $('.content').css("font-family", 'Gill Sans,Gill Sans MT,Calibri,sans-serif', 'important');
             } else if (strFontValue == '5') {
-                $('.content').css("font-family", 'Papyrus,fantasy', 'important');
+                $('.content').css("font-family", '"Trebuchet MS", Helvetica, sans-serif', 'important');
+            } else if (strFontValue == '6') {
+                $('.content').css("font-family", 'Georgia, serif', 'important');
+            } else if (strFontValue == '7') {
+                $('.content').css("font-family", '"Palatino Linotype", "Book Antiqua", Palatino, serif', 'important');
             }
+            else if (strFontValue == '8') {
+                $('.content').css("font-family", '"Times New Roman", Times, serif', 'important');
+            }
+            else if (strFontValue == '9') {
+                $('.content').css("font-family", 'Arial, Helvetica, sans-serif', 'important');
+            }
+            else if (strFontValue == '10') {
+                $('.content').css("font-family", '"Comic Sans MS", cursive, sans-serif', 'important');
+            }
+            else if (strFontValue == '11') {
+                $('.content').css("font-family", 'Verdana, Geneva, sans-serif', 'important');
+            }
+            else if (strFontValue == '12') {
+                $('.content').css("font-family", '"Lucida Sans Unicode", "Lucida Grande", sans-serif', 'important');
+            }
+            else if (strFontValue == '13') {
+                $('.content').css("font-family", 'Tahoma, Geneva, sans-serif', 'important');
+            }
+            else if (strFontValue == '14') {
+                $('.content').css("font-family", '"Courier New", Courier, monospace', 'important');
+            }
+            else if (strFontValue == '15') {
+                $('.content').css("font-family", '"Lucida Console", Monaco, monospace', 'important');
+            }
+
         }
     });
 
@@ -102,7 +168,11 @@ function ColorCheckDay() {
             // No profile in storage
         } else {
 
-            $('._16aorrq').css("background-color", result.strBackColor.toString(), 'important');
+            $('.pageContainer').css("background-color", result.strBackColor.toString(), 'important');
+            $('.breadcrumbs').css("background-color", result.strBackColor.toString(), 'important');
+            $('.scroller').css("background-color", result.strBackColor.toString(), 'important');
+            $('.header').css("background-color", result.strBackColor.toString(), 'important');
+            $('body').css("background-color", result.strBackColor.toString(), 'important');
         }
     });
 
@@ -112,6 +182,18 @@ function ColorCheckDay() {
             // No profile in storage
         } else {
             $('.project').css("color", result.strTextColor.toString(), 'important');
+            $('a.fs-block._1s3in7q').css("color", result.strTextColor.toString() + ' !important', 'important');
+            $('._1lfwm1e').css("color", result.strTextColor.toString() + ' !important', 'important');
+            $('._nxo4pw').css("color", result.strTextColor.toString(), 'important');
+        }
+    });
+
+    chrome.storage.sync.get('strbulletColor', function (result) {
+
+        if (typeof result.strbulletColor === "undefined") {
+            // No profile in storage
+        } else {
+            $('.bullet').css("color", result.strbulletColor.toString(), 'important');
         }
     });
 
@@ -154,7 +236,7 @@ function ProcessReminders(ReminderItem, type) {
             today = dd;
             if (date.toString() == today.toString() && curTime.toString() == time.toString()) {
                 alert(Message);
-                
+
             }
         }
         //Daily Reminders
@@ -162,7 +244,7 @@ function ProcessReminders(ReminderItem, type) {
             var time = arrDateTime[0];
             if (curTime.toString() == time.toString()) {
                 alert(Message);
-                
+
             }
         }
         //Yearly Reminders
@@ -170,16 +252,16 @@ function ProcessReminders(ReminderItem, type) {
             today = dd + '-' + mm
             if (date.toString() == today.toString() && curTime.toString() == time.toString()) {
                 alert(Message);
-                
+
             }
         } else {
             if (date.toString() == today.toString() && curTime.toString() == time.toString()) {
                 alert(Message);
-                
+
             }
         }
     }
-     
+
 }
 
 
@@ -200,4 +282,6 @@ function CheckReminder() {
     var Reminder = jQuery('div:contains("@ry,")').closest('.content').text();
     var ReminderItem = Reminder.split("@ry,");
     ProcessReminders(ReminderItem, 3);
+
+
 }
