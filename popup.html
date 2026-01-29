@@ -18,24 +18,71 @@
         Add Days
     </button>
     <h4>Font Settings:</h4>
-    <select id="ddlViewBy">
-        <option value="0">Default</option>
-        <option value="1">Type Writer</option>
-        <option value="2">Helvetica</option>
-        <option value="3">Avant Garde</option>
-        <option value="4">Gill Sans</option>
-        <option value="5">Trebuchet</option>
-        <option value="6">Georgia</option>
-        <option value="7">Palatino</option>
-        <option value="8">Times New Roman</option>
-        <option value="9">Arial</option>
-        <option value="10">Comic Sans MS</option>
-        <option value="11">Verdana</option>
-        <option value="12">Lucida</option>
-        <option value="13">Tahoma</option>
-        <option value="14">Courier New</option>
-        <option value="15">Lucida Console</option>
-    </select>
+ <select id="ddlViewBy">
+  <option value="0">Default (Website Font)</option>
+
+  <!-- ================= UI / SYSTEM ================= -->
+  <option value="16">System UI (Recommended)</option>
+  <option value="17">Segoe UI (Windows)</option>
+  <option value="18">San Francisco (macOS)</option>
+  <option value="19">Roboto (Android/Linux)</option>
+
+  <!-- ================= SANS-SERIF ================= -->
+  <option value="2">Helvetica</option>
+  <option value="9">Arial</option>
+  <option value="11">Verdana</option>
+  <option value="13">Tahoma</option>
+  <option value="5">Trebuchet MS</option>
+  <option value="4">Gill Sans</option>
+  <option value="3">Avant Garde</option>
+  <option value="12">Lucida Sans</option>
+  <option value="20">Calibri</option>
+  <option value="21">Candara</option>
+  <option value="22">Optima</option>
+  <option value="23">Franklin Gothic</option>
+  <option value="24">Arial Narrow</option>
+  <option value="25">Century Gothic</option>
+  <option value="26">Futura</option>
+  <option value="27">Helvetica Neue</option>
+
+  <!-- ================= SERIF ================= -->
+  <option value="6">Georgia</option>
+  <option value="7">Palatino</option>
+  <option value="8">Times New Roman</option>
+  <option value="28">Cambria</option>
+  <option value="29">Garamond</option>
+  <option value="30">Baskerville</option>
+  <option value="31">Book Antiqua</option>
+  <option value="32">Didot</option>
+  <option value="33">Hoefler Text</option>
+
+  <!-- ================= MONOSPACE / CODE ================= -->
+  <option value="1">Typewriter</option>
+  <option value="14">Courier New</option>
+  <option value="15">Lucida Console</option>
+  <option value="18">Consolas</option>
+  <option value="34">Menlo</option>
+  <option value="35">Monaco</option>
+  <option value="36">SF Mono</option>
+  <option value="37">Ubuntu Mono</option>
+  <option value="38">DejaVu Sans Mono</option>
+
+  <!-- ================= FUN / DISPLAY ================= -->
+  <option value="10">Comic Sans MS</option>
+  <option value="39">Impact</option>
+  <option value="40">Chalkboard</option>
+  <option value="41">Papyrus</option>
+  <option value="42">Copperplate</option>
+
+  <!-- ================= LINUX COMMON ================= -->
+  <option value="43">Ubuntu</option>
+  <option value="44">Cantarell</option>
+  <option value="45">Noto Sans</option>
+  <option value="46">Noto Serif</option>
+
+  <!-- ================= FALLBACK ================= -->
+  <option value="99">Generic Sans-serif</option>
+</select>
     <h4>Text Color:</h4>
     <input type="color" id="textcolor" value="#ff0000"></input>
     <button text="Reset" id="btnResetText">
